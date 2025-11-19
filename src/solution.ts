@@ -106,22 +106,57 @@
 // console.log(filterActiveUsers(users));
 
 // solution 6
-interface Book {
-    title: string;
-    author: string;
-    publishedYear: number;
-    isAvailable: boolean;
+// interface Book {
+//     title: string;
+//     author: string;
+//     publishedYear: number;
+//     isAvailable: boolean;
+// }
+
+// const printBookDetails = (book: Book): void => {
+//     console.log(`Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${book.isAvailable ? 'Yes' : 'No'}`);
+// }
+
+// const myBook: Book = {
+//   title: 'The Great Gatsby',
+//   author: 'F. Scott Fitzgerald',
+//   publishedYear: 1925,
+//   isAvailable: true,
+// };
+
+// printBookDetails(myBook);
+
+// solution 7 
+type ArrayOfStringOrNumber = string[] | number[];
+
+const getUniqueValues = (array1: ArrayOfStringOrNumber, array2: ArrayOfStringOrNumber): number[] => {
+        const commonValuesCount: {[key: number]: number} = {};
+        let uniqueValues = [];
+        
+        const array1Num = Number(array1);
+        const array2Num = Number(array2);
+
+        if (typeof array1Num === 'number' && typeof array2Num === 'number') {
+
+            for (let index = 0; index < array1.length; index++) {
+                const element1 = Number(array1[index])
+                commonValuesCount[element1] = (commonValuesCount[element1] || 0 ) + 1
+            }
+
+            for (let index = 0; index < array2.length; index++) {
+                const element2 = Number(array2[index])
+                commonValuesCount[element2] = (commonValuesCount[element2] || 0 ) + 1
+            }
+
+            for(const key in commonValuesCount){
+                uniqueValues.push(Number(key))
+            }
+        }
+
+        return uniqueValues;
 }
 
-const printBookDetails = (book: Book): void => {
-    console.log(`Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${book.isAvailable ? 'Yes' : 'No'}`);
-}
 
-const myBook: Book = {
-  title: 'The Great Gatsby',
-  author: 'F. Scott Fitzgerald',
-  publishedYear: 1925,
-  isAvailable: true,
-};
-
-printBookDetails(myBook);
+const array1 = ["1", "2", "3", "4", "5"];
+const array2 = [3, 4, 5, 6, 7];
+console.log(getUniqueValues(array1, array2));
