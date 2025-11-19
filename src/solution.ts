@@ -1,4 +1,4 @@
-type FormatValueInputOutputType = string | boolean | number | undefined
+type FormatValueInputOutputType = string | boolean | number 
 
 const formatValue = (value: FormatValueInputOutputType): FormatValueInputOutputType => {
     if (typeof value === 'string') {
@@ -7,6 +7,8 @@ const formatValue = (value: FormatValueInputOutputType): FormatValueInputOutputT
         return value * 10
     } else if (typeof value === 'boolean') {
         return !value
+    } else {
+        return 'Invalid parameter'
     }
 }
 
