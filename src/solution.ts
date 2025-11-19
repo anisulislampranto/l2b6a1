@@ -80,27 +80,48 @@
 
 
 // solution 5 
-type UserArrayOfObjects = {id: number, name: string, email: string, isActive: boolean}[]
+// type UserArrayOfObjects = {id: number, name: string, email: string, isActive: boolean}[]
 
-const filterActiveUsers = (userArray: UserArrayOfObjects): UserArrayOfObjects | string => {
-    if (Array.isArray(userArray)) {
-        let activeUsers = [];
-        for (let index = 0; index < userArray.length; index++) {
-            const element = userArray[index];
-            if (element.isActive) {
-                activeUsers.push(element)
-            }
-        }
-        return activeUsers;
-    }
+// const filterActiveUsers = (userArray: UserArrayOfObjects): UserArrayOfObjects | string => {
+//     if (Array.isArray(userArray)) {
+//         let activeUsers = [];
+//         for (let index = 0; index < userArray.length; index++) {
+//             const element = userArray[index];
+//             if (element.isActive) {
+//                 activeUsers.push(element)
+//             }
+//         }
+//         return activeUsers;
+//     }
 
-    return 'Invalid Input'
+//     return 'Invalid Input'
+// }
+
+// const users = [
+//   { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
+//   { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
+//   { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
+// ];
+
+// console.log(filterActiveUsers(users));
+
+// solution 6
+interface Book {
+    title: string;
+    author: string;
+    publishedYear: number;
+    isAvailable: boolean;
 }
 
-const users = [
-  { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
-  { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
-  { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
-];
+const printBookDetails = (book: Book): void => {
+    console.log(`Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${book.isAvailable ? 'Yes' : 'No'}`);
+}
 
-console.log(filterActiveUsers(users));
+const myBook: Book = {
+  title: 'The Great Gatsby',
+  author: 'F. Scott Fitzgerald',
+  publishedYear: 1925,
+  isAvailable: true,
+};
+
+printBookDetails(myBook);
