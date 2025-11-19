@@ -51,29 +51,56 @@
 
 
 // solution 4 
-type ArrayOfObjects = { title: string, rating: number }[]
+// type ArrayOfObjects = { title: string, rating: number }[]
 
-const filterByRating = (inputArray: ArrayOfObjects): ArrayOfObjects | string => {
-    if (Array.isArray(inputArray)) {
-        let filteredArray = []
-        for (let index = 0; index < inputArray.length; index++) {
-            const element = inputArray[index];
-            if (element.rating < 5 || element.rating > 0) {
-                if (element.rating > 4) {
-                    filteredArray.push(element)
-                }
+// const filterByRating = (inputArray: ArrayOfObjects): ArrayOfObjects | string => {
+//     if (Array.isArray(inputArray)) {
+//         let filteredArray = []
+//         for (let index = 0; index < inputArray.length; index++) {
+//             const element = inputArray[index];
+//             if (element.rating < 5 || element.rating > 0) {
+//                 if (element.rating > 4) {
+//                     filteredArray.push(element)
+//                 }
+//             }
+//         }
+//         return filteredArray;
+//     }
+
+//     return 'Rating cannot be less then 0 or greater then 5'
+// }
+
+// const books = [
+//     { title: 'Book A', rating: 4.5 },
+//     { title: 'Book B', rating: 3.2 },
+//     { title: 'Book C', rating: 5.0 },
+// ];
+// console.log(books);
+// console.log(filterByRating(books));
+
+
+// solution 5 
+type UserArrayOfObjects = {id: number, name: string, email: string, isActive: boolean}[]
+
+const filterActiveUsers = (userArray: UserArrayOfObjects): UserArrayOfObjects | string => {
+    if (Array.isArray(userArray)) {
+        let activeUsers = [];
+        for (let index = 0; index < userArray.length; index++) {
+            const element = userArray[index];
+            if (element.isActive) {
+                activeUsers.push(element)
             }
         }
-        return filteredArray;
+        return activeUsers;
     }
 
-    return 'Rating cannot be less then 0 or greater then 5'
+    return 'Invalid Input'
 }
 
-const books = [
-    { title: 'Book A', rating: 4.5 },
-    { title: 'Book B', rating: 3.2 },
-    { title: 'Book C', rating: 5.0 },
+const users = [
+  { id: 1, name: 'Rakib', email: 'rakib@example.com', isActive: true },
+  { id: 2, name: 'Asha', email: 'asha@example.com', isActive: false },
+  { id: 3, name: 'Rumi', email: 'rumi@example.com', isActive: true },
 ];
-console.log(books);
-console.log(filterByRating(books));
+
+console.log(filterActiveUsers(users));
