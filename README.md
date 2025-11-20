@@ -11,7 +11,9 @@ Ans: keyof ব্যবহার করা হয় TypeScript এ একটা �
  `   isAvailable: boolean;`
 `}`
 
+
 `// keyof Book "title" | "author" | "publishedYear" | "isAvailable"`
+
 `type BookKeys = keyof Book;`
 
 
@@ -20,22 +22,36 @@ Ans: keyof ব্যবহার করা হয় TypeScript এ একটা �
 Ans: 
 
 `// union`
+
 `type A = { x: number };`
+
 `type B = { y: string };`
 
 `let u: A | B;`
 
+
 `u = { x: 10 }; // okay`
+
 `u = { y: "hello" }; // okay`
+
 `u = { x: 10, y: "hi" }; // okay` 
+
 কারণ দুইটার একটা থাকলেই চলবে 
 
+
 `// intersection`
+
 `type A = { x: number };`
+
 `type B = { y: string };`
+
 
 `let i: A & B;`
 
+
 `i = { x: 10, y: "hello" }; // okay কারণ দুইটাই আছে `
+
 `i = { x: 10 }; // not okay কারণ দুইটাই থাকতে হবে `
+
 `i = { y: "hello" }; // not okay কারণ দুইটাই থাকতে হবে `
+
