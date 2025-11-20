@@ -1,6 +1,7 @@
 2. What is the use of the keyof keyword in TypeScript? Provide an example.
 
 Ans: keyof ব্যবহার করা হয় TypeScript এ একটা টাইপ অথবা ইন্টারফেসের key গুলো নিয়ে একটা নতুন ইউনিয়ন বানানোর জন্য।
+
 ঊদাহারনঃ
 
 `interface Book {`
@@ -12,8 +13,6 @@ Ans: keyof ব্যবহার করা হয় TypeScript এ একটা �
 
 `// keyof Book "title" | "author" | "publishedYear" | "isAvailable"`
 `type BookKeys = keyof Book;`
-
-
 
 
 5. Provide an example of using union and intersection types in TypeScript.
