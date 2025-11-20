@@ -127,36 +127,68 @@
 // printBookDetails(myBook);
 
 // solution 7 
-type ArrayOfStringOrNumber = string[] | number[];
+// type ArrayOfStringOrNumber = string[] | number[];
 
-const getUniqueValues = (array1: ArrayOfStringOrNumber, array2: ArrayOfStringOrNumber): number[] => {
-        const commonValuesCount: {[key: number]: number} = {};
-        let uniqueValues = [];
+// const getUniqueValues = (array1: ArrayOfStringOrNumber, array2: ArrayOfStringOrNumber): number[] => {
+//         const commonValuesCount: {[key: number]: number} = {};
+//         let uniqueValues = [];
         
-        const array1Num = Number(array1);
-        const array2Num = Number(array2);
+//         const array1Num = Number(array1);
+//         const array2Num = Number(array2);
 
-        if (typeof array1Num === 'number' && typeof array2Num === 'number') {
+//         if (typeof array1Num === 'number' && typeof array2Num === 'number') {
 
-            for (let index = 0; index < array1.length; index++) {
-                const element1 = Number(array1[index])
-                commonValuesCount[element1] = (commonValuesCount[element1] || 0 ) + 1
+//             for (let index = 0; index < array1.length; index++) {
+//                 const element1 = Number(array1[index])
+//                 commonValuesCount[element1] = (commonValuesCount[element1] || 0 ) + 1
+//             }
+
+//             for (let index = 0; index < array2.length; index++) {
+//                 const element2 = Number(array2[index])
+//                 commonValuesCount[element2] = (commonValuesCount[element2] || 0 ) + 1
+//             }
+
+//             for(const key in commonValuesCount){
+//                 uniqueValues.push(Number(key))
+//             }
+//         }
+
+//         return uniqueValues;
+// }
+
+
+// const array1 = ["1", "2", "3", "4", "5"];
+// const array2 = [3, 4, 5, 6, 7];
+// console.log(getUniqueValues(array1, array2));
+
+
+// solution 8
+type Product = { name: string; price: number; quantity: number; discount?: number }
+
+type ProductArray = Product[]
+
+const calculateTotalPrice = (productsArray: ProductArray): number | string => {
+
+    try {
+        const totalPrice = productsArray.reduce((total: number, product: Product) => {
+            if (product?.discount && product?.discount < 0 || product?.discount && product?.discount > 100) {
+                throw new Error('Discount cannot me less then 0 or more then 100')
             }
+            const totalPrice = product.price * product.quantity;
+            const discountPrice = product?.discount ? totalPrice * (1 - product.discount / 100) : totalPrice;
+            return total + discountPrice
+        }, 0)
+        return totalPrice
+    } catch (error: any) {
+        return error
+    }
 
-            for (let index = 0; index < array2.length; index++) {
-                const element2 = Number(array2[index])
-                commonValuesCount[element2] = (commonValuesCount[element2] || 0 ) + 1
-            }
-
-            for(const key in commonValuesCount){
-                uniqueValues.push(Number(key))
-            }
-        }
-
-        return uniqueValues;
 }
 
+const products = [
+    { name: 'Pen', price: 10, quantity: 2 },
+    { name: 'Notebook', price: 25, quantity: 3, discount: 100 },
+    { name: 'Bag', price: 50, quantity: 1, discount: 100 },
+];
 
-const array1 = ["1", "2", "3", "4", "5"];
-const array2 = [3, 4, 5, 6, 7];
-console.log(getUniqueValues(array1, array2));
+console.log(calculateTotalPrice(products));
